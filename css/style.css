@@ -1,0 +1,162 @@
+@import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,300,700);
+
+* {
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+}
+
+html,body {
+	height:100%;
+}
+
+body {
+	background-color:#d5dfec;
+	background-image:url('../img/bathroom-BG.jpg');
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-position:center center;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	overflow:hidden;
+}
+
+h1 {
+	text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9;
+}
+
+h2 {
+	text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb;
+}
+
+h1 {
+	font-size:6em;
+	letter-spacing:0px;
+	text-align:center;
+	color:#4c6699;
+
+	/*text-shadow:0px 1px 0px #2f384a, 0px 0px 20px rgba(18,33,64,0.2);*/
+}
+
+h2 {
+	font-size:2.5em;
+	letter-spacing:0px;
+	text-align:center;
+	color:#4c6699;
+	margin-top:-15px;
+	margin-left:-30px;
+	
+	/*text-shadow:0px 1px 0px #2f384a, 0px 0px 20px rgba(18,33,64,0.2);*/
+}
+
+h3 {
+	font-size:2em;
+	font-weight:400;
+	letter-spacing:0px;
+	text-align:center;
+	color:#4c6699;
+	
+	/*text-shadow:0px 1px 0px #2f384a, 0px 0px 20px rgba(18,33,64,0.2);*/
+}
+
+#thought {
+	position:absolute;
+	width:50%;
+	text-align:center;
+	top:45%;
+	left:25%;
+	z-index:200;
+}
+
+#progress-bar {
+	margin-top:50px;
+	width:200px;
+	height:20px;
+	background:#999;
+	border-radius:10px;
+	border:3px solid #fff;
+	position:relative;
+	left:50%;
+	margin-left:-100px;
+	overflow:hidden;
+}
+
+#progress {
+	width:50%;
+	height:20px;
+	background: #b8e1fc;
+background: -moz-linear-gradient(left,  #b8e1fc 0%, #a9d2f3 10%, #90bae4 25%, #90bcea 37%, #90bff0 50%, #a2daf5 97%, #bdf3fd 100%);
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,#b8e1fc), color-stop(10%,#a9d2f3), color-stop(25%,#90bae4), color-stop(37%,#90bcea), color-stop(50%,#90bff0), color-stop(97%,#a2daf5), color-stop(100%,#bdf3fd));
+background: -webkit-linear-gradient(left,  #b8e1fc 0%,#a9d2f3 10%,#90bae4 25%,#90bcea 37%,#90bff0 50%,#a2daf5 97%,#bdf3fd 100%);
+background: -o-linear-gradient(left,  #b8e1fc 0%,#a9d2f3 10%,#90bae4 25%,#90bcea 37%,#90bff0 50%,#a2daf5 97%,#bdf3fd 100%);
+background: -ms-linear-gradient(left,  #b8e1fc 0%,#a9d2f3 10%,#90bae4 25%,#90bcea 37%,#90bff0 50%,#a2daf5 97%,#bdf3fd 100%);
+background: linear-gradient(to right,  #b8e1fc 0%,#a9d2f3 10%,#90bae4 25%,#90bcea 37%,#90bff0 50%,#a2daf5 97%,#bdf3fd 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b8e1fc', endColorstr='#bdf3fd',GradientType=1 );
+
+}
+
+#overlay {
+	background-image:url('../img/overlay.png');
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-position:center center;
+	position:absolute;
+	z-index:100;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	opacity:0.5;
+}
+
+#titling {
+	transform:rotate(-10deg);
+	position:absolute;
+	top:80px;
+	left:100px;
+}
+
+#settings-toggle {
+	font-size:2em;
+	position:absolute;
+	bottom:0;
+	left:50%;
+	margin-left:-25px;
+	text-align:center;
+	width:50px;
+	line-height:50px;
+	cursor:pointer;
+	z-index:200;
+	color:#4c6699;
+	opacity:0.5;
+	transition:bottom 400ms;
+}
+
+#settings-toggle:hover {
+	opacity:1;
+}
+
+#settings-panel {
+	position:absolute;
+	z-index:200;
+	width:100%;
+	background:#4c6699;
+	border-top:2px solid #fff;
+	box-shadow:0px -2px 4px rgba(0,0,0,0.25);
+	height:200px;
+	bottom:-200px;
+	left:0;
+	transition:bottom 400ms;
+}
+
+@media screen and (min-width:1400px) {
+	h3 {
+		font-size:2.3em;
+	}
+}
