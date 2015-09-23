@@ -10,23 +10,19 @@ var settingsOpen = false;
 
 $(document).ready(function(){
 	cycleFog();
-	getThought();
+	nextThought();
 });
 
 $(document).on('keydown',function(e){
 	switch (e.which) {
 		case 37:
-			autoPlay = false;
-			currentPost--;
-			getThought();
+			prevThought();
 			break;
 		case 39:
-			autoPlay = false;
-			currentPost++;
-			getThought();
+			nextThought();
 			break;
 	}
-})
+});
 
 $('#settings-toggle').on('click',function(){
 	if (settingsOpen) {
@@ -38,8 +34,14 @@ $('#settings-toggle').on('click',function(){
 		$('#settings-panel').css('bottom',0);
 		settingsOpen = true;
 	}
-	
-})
+});
+
+$('#progress-play').on('click',function(){
+	if (autoPlay) { pause(); } else { play(); }
+});
+
+$('#progress-prev').on('click',function(){prevThought()});
+$('#progress-next').on('click',function(){nextThought()});
 
 function cycleFog() {
 	$('#overlay').animate({
@@ -54,7 +56,6 @@ function cycleFog() {
 }
 
 function getThought(){
-	if (autoPlay) {currentPost++;}
 
 	clearTimeout(thoughtLoop);
 	if (currentPost>=maxPost) 	{ currentPost=0; }
@@ -75,13 +76,41 @@ function getThought(){
   })
   .always(function() {
     console.log( "finished loading thought "+currentPost );
-    thoughtLoop = setTimeout(function(){getThought()},delayThought);
-    timerAnimate();
-  });;
+    if (autoPlay) {
+	    thoughtLoop = setTimeout(function(){nextThought()},delayThought);
+	    timerRefresh();
+	}
+  });
 }
 
-function timerAnimate(){
-	$('#progress').css('width','0').animate({
+function timerRefresh(){
+	console.log('timer refreshed')
+	$('#progress').stop().css('width','0').animate({
 		'width':'100%'
 	},delayThought);
+}
+
+function pause(){
+	console.log('timer paused');
+	clearTimeout(thoughtLoop);
+	$('#progress').stop().css('width','0');
+	$('#progress-play').find('i').removeClass('fa-play').addClass('fa-pause');
+	autoPlay=false;
+};
+
+function play(){
+	thoughtLoop = setTimeout(function(){getThought()},delayThought);
+	$('#progress-play').find('i').removeClass('fa-pause').addClass('fa-play');
+    timerRefresh();
+    autoPlay=true;
+}
+
+function nextThought(){
+	currentPost++;
+	getThought();
+}
+
+function prevThought(){
+	currentPost--;
+	getThought();
 }
