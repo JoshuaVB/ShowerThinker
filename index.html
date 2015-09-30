@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=0.65">
 
   <title>ShowerThinker</title>
   <meta name="description" content="ShowerThink">
@@ -25,29 +25,24 @@
 	<div id='overlay' aria-hidden='true'></div>
 	<div id="thought">
 		<h3></h3>
+		<h4></h4>
 		<div id='progress-bar'><div id='progress'></div></div>
 		<div id='progress-control-holder' class='noselect'>
 			<span id='progress-prev' class='progress-control'><i class="fa fa-step-backward"></i></span>
-			<span id='progress-play' class='progress-control'><i class="fa fa-play"></i></span>
+			<span id='progress-play' class='progress-control'><i class="fa fa-pause"></i></span>
 			<span id='progress-next' class='progress-control'><i class="fa fa-step-forward"></i></span>
 		</div>
 	</div>
 	<div id='settings-toggle'><i class="fa fa-cog"></i></div>
 	<div id='settings-panel'>
 		<div class='panel'>
-
+			<div class='filter-selector current' data-filter=''>Hot</div>
+			<div class='filter-selector' data-filter='new'>New</div>
+			<div class='filter-selector' data-filter='top'>Top</div>
 		</div>
 		<div class='panel'>
-
-		</div>
-		<div class='panel'>
-
-		</div>
-		<div class='panel'>
-
-		</div>
-		<div class='panel'>
-
+			<div class='filter-selector' data-filter='rising'>Rising</div>
+			<div class='filter-selector' data-filter='controversial'>Controversial</div>
 		</div>
 	</div>
 

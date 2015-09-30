@@ -7,6 +7,7 @@ var thoughtLoop;
 var autoPlay = true;
 
 var settingsOpen = false;
+var filterURL = '';
 
 $(document).ready(function(){
 	cycleFog();
@@ -43,6 +44,14 @@ $('#progress-play').on('click',function(){
 $('#progress-prev').on('click',function(){prevThought()});
 $('#progress-next').on('click',function(){nextThought()});
 
+$('.filter-selector').on('click',function(){
+	$('.filter-selector').removeClass('current');
+	$(this).addClass('current');
+
+	var newFilter = $(this).data('filter')+'/';
+	changeFilter(newFilter);
+})
+
 function cycleFog() {
 	$('#overlay').animate({
 		opacity: 0.9
@@ -61,15 +70,19 @@ function getThought(){
 	if (currentPost>=maxPost) 	{ currentPost=0; }
 	if (currentPost<0) 			{ currentPost=maxPost-1; }
 
-	$.get( "https://www.reddit.com/r/Showerthoughts/.json", function( data ) {
+	console.log("https://www.reddit.com/r/Showerthoughts/"+filterURL+".json");
+
+	$.get( "https://www.reddit.com/r/Showerthoughts/"+filterURL+".json", function( data ) {
 		var $data = data;
 		var $posts = $data.data.children;
 		maxPost = $posts.length;
 
 		var $loadPost = $posts[currentPost];
-		var $loadText = $loadPost.data.title;
+		var $loadTitle = $loadPost.data.title;
+		var $loadAuthor = $loadPost.data.author;
 
-		$('#thought h3').empty().html($loadText);
+		$('#thought h3').empty().html($loadTitle);
+		$('#thought h4').empty().html("<b>By:</b> "+$loadAuthor);
 	})
   .fail(function() {
     console.log( "error loading thought "+currentPost );
@@ -83,6 +96,12 @@ function getThought(){
   });
 }
 
+function changeFilter(newFilter) {
+	filterURL = newFilter;
+	currentPost=0;
+	getThought();	
+}
+
 function timerRefresh(){
 	console.log('timer refreshed')
 	$('#progress').stop().css('width','0').animate({
@@ -94,13 +113,13 @@ function pause(){
 	console.log('timer paused');
 	clearTimeout(thoughtLoop);
 	$('#progress').stop().css('width','0');
-	$('#progress-play').find('i').removeClass('fa-play').addClass('fa-pause');
+	$('#progress-play').find('i').removeClass('fa-pause').addClass('fa-play');
 	autoPlay=false;
 };
 
 function play(){
 	thoughtLoop = setTimeout(function(){getThought()},delayThought);
-	$('#progress-play').find('i').removeClass('fa-pause').addClass('fa-play');
+	$('#progress-play').find('i').removeClass('fa-play').addClass('fa-pause');
     timerRefresh();
     autoPlay=true;
 }
