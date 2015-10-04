@@ -250,7 +250,7 @@ h4 b {
 	}
 }
 
-@media screen and (max-width:640px) {
+@media screen and (max-width:640px), screen and (max-height:650px) {
 	#titling {
 		top:20px;
 		left:5%;
