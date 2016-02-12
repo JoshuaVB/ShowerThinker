@@ -101,19 +101,22 @@ h4 b {
 #progress-bar {
 	margin-top:30px;
 	width:200px;
-	height:20px;
-	background:#999;
-	border-radius:10px;
-	border:3px solid #fff;
+	height:8px;
+	background:#444;
+	/*border:1px solid #fff;*/
+	/*border-radius:10px;*/
+	/*border:3px solid #fff;*/
 	position:relative;
 	left:50%;
 	margin-left:-100px;
 	overflow:hidden;
+
+	box-shadow:0px 0px 10px #fff;
 }
 
 #progress {
 	width:50%;
-	height:20px;
+	height:8px;
 	background: #b8e1fc;
 	background: -moz-linear-gradient(left,  #b8e1fc 0%, #a9d2f3 10%, #90bae4 25%, #90bcea 37%, #90bff0 50%, #a2daf5 97%, #bdf3fd 100%);
 	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#b8e1fc), color-stop(10%,#a9d2f3), color-stop(25%,#90bae4), color-stop(37%,#90bcea), color-stop(50%,#90bff0), color-stop(97%,#a2daf5), color-stop(100%,#bdf3fd));
@@ -138,6 +141,7 @@ h4 b {
 	transition:200ms;
 	-webkit-transition:200ms;
 	opacity:0.6;
+	text-shadow:0px 1px 4px rgba(0,0,0,0.2);
 }
 
 .progress-control:hover {
